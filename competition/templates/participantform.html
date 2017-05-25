@@ -1,0 +1,64 @@
+<html>                                                                                                                                                
+<head>                                                                                                                                                
+<!-- Latest compiled and minified CSS -->                                                                                                             
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">                                                  
+<!-- jQuery library -->                                                                                                                               
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>                                                              
+<!-- Latest compiled JavaScript -->                                                                                                                   
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>                                                           
+<style>                                                                                                                                               
+.alert {                                                                                                                                              
+    padding: 20px;                                                                                                                                    
+    color: white;                                                                                                                                     
+    margin-bottom: 15px;                                                                                                                              
+}                                                                                                                                                     
+                                                                                                                                                      
+.success{                                                                                                                                             
+    background-color: #13E0CD; /* Red */                                                                                                              
+}                                                                                                                                                     
+                                                                                                                                                      
+.error{                                                                                                                                               
+background-color:#db4437;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+</style>
+</head>
+<body>
+
+
+{% if messages %}
+{% for message in messages %}
+  <ul class="messages alert {{message.tags}}">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <li class="{{message.tags}}">{{ message }}</li>
+   </ul>
+{% endfor %}
+{% endif %}
+
+{% block content %}
+    <h1>Participant Registration</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+    </div>
+</body>
+<html>
