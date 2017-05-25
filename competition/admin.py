@@ -15,3 +15,7 @@ class EntryAdmin(admin.ModelAdmin):
         ('Participant Information', {'fields': ('uuid','participant',)}),                                                                             
         ('Entry Information', {'fields': ('challenge','document','maxpoints',)}),                                                                     
     ]                                         
+
+admin.site.register(Participant, ParticipantAdmin)                                                                                                    
+admin.site.register(Entry, EntryAdmin)                                                                                                                
+admin.site.register(Challenge) 
