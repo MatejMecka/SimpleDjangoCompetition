@@ -1,0 +1,92 @@
+<html>                                                                                                                                                
+<head>                                                                                                                                                
+<style>                                                                                                                                               
+@import url('https://fonts.googleapis.com/css?family=Roboto');                                                                                        
+body{                                                                                                                                                 
+background-color:#1f2c30;                                                                                                                             
+}                                                                                                                                                     
+                                                                                                                                                      
+                                                                                                                                                      
+table,tr,th{                                                                                                                                          
+font-family:'Roboto', sans-serif;                                                                                                                     
+color:#4dc3a1;                                                                                                                                        
+}                                                                                                                                                     
+                                                                                                                                                      
+h1{                                                                                                                                                   
+font-family:'Roboto', sans-serif;                                                                                                                     
+color:#4dc3a1;                                                                                                                                        
+text-align:center;                                                                                                                                    
+padding-top:5%;
+}
+h3{
+font-family:'Roboto', sans-serif;
+color:#4dc3a1;
+text-align:center;
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+    background-color:#4d90fe;
+}
+li{
+font-family:'Roboto', sans-serif;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+
+</style>
+</head>
+<body>
+<ul class="messages alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <li class="">The Competition has ended! This are the final results! </li>
+   </ul>
+
+<h1>Leaderboard:</h1>
+
+<table cellpadding="10" cellspacing="10">
+<tr>
+    <th>Postition</th>
+    <th>Participant</th>
+    <th>Reddit Username</th>
+    <th>Slack Username</th>
+    <th>Challenge 1</th>
+    <th>Challenge 2</th>
+    <th>Challenge 3</th>
+    <th>Challenge 4</th>
+    <th>Total</th>
+  </tr>
+{% for participant in participants %}  
+<th>{{ forloop.counter }}</th>
+    <th>{{ participant.participant }}</th>
+    <th>{{ participant.redditusername }}</th>
+    <th>{{ participant.slackusername }}</th>
+    <th>{{ participant.challengeone }}</th>
+    <th>{{ participant.challengetwo }}</th>
+    <th>{{ participant.challengethree }}</th>
+    <th>{{ participant.challengefour }}</th>
+    <th>{{ participant.totalpoints }}</th>
+  </tr>
+{% endfor %}
+
+</table>
+<h3>Congragulations to all the Winners and finalists! You did some Amazing stuff.</h3>
+</body>
+</html>
