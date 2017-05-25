@@ -1,0 +1,92 @@
+<html>                                                                                                                                                
+<head>                                                                                                                                                
+<!-- Latest compiled and minified CSS -->                                                                                                             
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">                                                  
+<!-- jQuery library -->                                                                                                                               
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>                                                              
+<!-- Latest compiled JavaScript -->                                                                                                                   
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>                                                           
+<style>                                                                                                                                               
+body{                                                                                                                                                 
+background-color:#16163e;                                                                                                                             
+}                                                                                                                                                     
+                                                                                                                                                      
+input#id_document{                                                                                                                                    
+display:-webkit-inline-box !important;                                                                                                                
+}                                                                                                                                                     
+                                                                                                                                                      
+label{                                                                                                                                                
+                                                                                                                                                      
+color:#afb5d4;                                                                                                                                        
+                                                                                                                                                      
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.success{
+    background-color: #13E0CD; /* Red */
+}
+
+.error{
+background-color:#db4437;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+h1{
+color:white;
+text-align:center;
+}
+
+.form{
+margin:auto;
+width:50%;
+padding:10px;
+}
+
+
+</style>
+</head>
+<body>
+
+
+{% if messages %}
+{% for message in messages %}
+  <ul class="messages alert {{message.tags}}">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <li class="{{message.tags}}">{{ message }}</li>
+   </ul>
+{% endfor %}
+{% endif %}
+
+{% block content %}
+    <h1>Submit Entry</h1>
+<div class="form">
+    <form method="POST" enctype="multipart/form-data" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+</div>
+{% endblock %}
+    </div>
+</body>
+<html>
